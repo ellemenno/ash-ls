@@ -5,15 +5,20 @@ package
 	import pixeldroid.bdd.Spec;
 	import pixeldroid.bdd.Thing;
 
+
 	public static class AshSpec
 	{
+		private static const it:Thing = Spec.describe('Ash');
+
 		public static function describe():void
 		{
-			var it:Thing = Spec.describe('Ash');
+			it.should('be versioned', be_versioned);
+		}
 
-			it.should('be versioned', function() {
-				it.expects(Engine.version).toPatternMatch('(%d+).(%d+).(%d+)', 3);
-			});
+
+		private static function be_versioned():void
+		{
+			it.expects(Engine.version).toPatternMatch('(%d+).(%d+).(%d+)', 3);
 		}
 	}
 }
